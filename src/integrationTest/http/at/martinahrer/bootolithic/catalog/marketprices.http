@@ -1,0 +1,76 @@
+POST http://localhost:8080/api/public/marketprices
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZM",
+  "baseKey": "USD",
+  "shift": "0.1",
+  "rate": "USD",
+  "quotationType": "PRICE"
+}
+
+###
+
+GET http://localhost:8080/api/public/marketprices/0PCKBXAAXMSZM
+Accept: application/json
+
+###
+
+# Not Found 404
+GET http://localhost:8080/api/public/marketprices/0PCKAH07MYFCT
+Accept: application/json
+
+###
+
+# Bad TSID 400
+GET http://localhost:8080/api/public/marketprices/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/public/marketprices
+Accept: application/json
+###
+
+# POST without id
+POST http://localhost:8080/api/public/marketprices
+Content-Type: application/json
+Accept: application/json
+
+{
+  "baseKey": "USD-1",
+  "shift": "0.1",
+  "rate": "USD",
+  "quotationType": "PRICE",
+  "active": "true"
+}
+
+###
+
+PUT http://localhost:8080/api/public/marketprices/0PCKBXAAXMSZM
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZM",
+  "baseKey": "USD-1-updated",
+  "shift": "0.1",
+  "rate": "USD",
+  "quotationType": "PRICE"
+}
+###
+
+# Bad request, id must not be updated
+PUT http://localhost:8080/api/public/marketprices/0PCKBXAAXMSZM
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "0PCKAH07MYFCV",
+  "baseKey": "USD-1-updated",
+  "shift": "0.1",
+  "rate": "USD",
+  "quotationType": "PRICE"
+}
+###

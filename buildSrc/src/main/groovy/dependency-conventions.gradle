@@ -1,0 +1,24 @@
+plugins {
+    id 'com.github.ben-manes.versions'
+    id 'com.autonomousapps.dependency-analysis'
+}
+
+def isNonStableDependency = { def candidate ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> candidate.version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    def spockStable = /^[0-9,.v-]+(-r)?-groovy-[0-9,.v-]+(-r)?$/ // spock is using variants for groovy versions such as 2.1-groovy-3.0
+
+    return !stableKeyword && !(candidate.version ==~ regex) && !(candidate.version ==~ spockStable)
+}
+
+tasks.named('dependencyUpdates').configure {
+    rejectVersionIf {
+        isNonStableDependency(it.candidate)
+    }
+}
+
+tasks.named('dependencyUpdates').configure {
+    // takes quite long, so defer to the end of the build to get test results earlier
+    mustRunAfter (tasks.named('check'))
+}
+

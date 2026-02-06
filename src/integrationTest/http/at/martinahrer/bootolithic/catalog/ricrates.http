@@ -1,0 +1,20 @@
+POST http://localhost:8080/api/public/ricrates
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "id": "USD",
+  "ask": 0.85,
+  "bid": 0.86
+}
+###
+
+GET http://localhost:8080/api/public/ricrates
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/public/ricrates/USD
+Accept: application/json
+
+###

@@ -1,0 +1,40 @@
+= README
+
+== TODO
+
+* Spring Modulith Flyway for module-wise migration
+
+== IntelliJ
+
+=== Helpful plugins
+
+* Spock: https://plugins.jetbrains.com/plugin/7114-spock-framework-enhancements
+* jMolecules: https://plugins.jetbrains.com/plugin/15166-jmolecules-support
+
+
+== Gradle
+
+=== Dependency Management
+
+We are using the Gradle https://docs.gradle.org/current/userguide/version_catalogs.html[version catalogs].
+
+Dependency management is solely performed using https://docs.spring.io/spring-boot/gradle-plugin/managing-dependencies.html#managing-dependencies.gradle-bom-support[Gradle's BOM] support.
+Hence, each dependency configuration needs a BOM applied once.
+This is a bit more verbose but much https://docs.spring.io/spring-boot/gradle-plugin/managing-dependencies.html[faster].
+
+=== Byte Buddy
+
+IMPORTANT: It's important that the project is built using Gradle as this is the only way to ensure that byte buddy kicks in properly.
+See https://github.com/xmolecules/jmolecules-integrations/tree/main/jmolecules-bytebuddy.
+
+== Coding Style
+
+Generally we try to adopt default IntelliJ code format
+
+.TODO
+Add editorconfig support for minimal adjustments,
+
+
+=== Nullability
+
+See https://jspecify.dev/.

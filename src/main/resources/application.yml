@@ -1,0 +1,25 @@
+application:
+  name: bootolithic
+  title: bootolithic
+
+cors:
+  allowed-origins: http://localhost:4200
+
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  sql:
+    init:
+      mode: always
+  flyway:
+    # Make sure that setting never makes into a production environment!
+    clean-disabled: false
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.SQL: DEBUG

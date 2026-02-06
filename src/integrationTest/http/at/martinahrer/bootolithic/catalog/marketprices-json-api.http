@@ -1,0 +1,65 @@
+POST http://localhost:8080/api/public/marketprices
+Content-Type:  application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "marketprices",
+    "id": "0PCKBXAAXMSZM",
+    "attributes": {
+      "baseKey": "USD-1",
+      "shift": "0.1",
+      "rate": "USD",
+      "quotationType": "PRICE",
+      "active": "true"
+    }
+  }
+}
+
+###
+
+GET http://localhost:8080/api/public/marketprices
+Accept: application/vnd.api+json
+###
+
+GET http://localhost:8080/api/public/marketprices/0PCKBXAAXMSZM
+Accept: application/vnd.api+json
+###
+
+# POST without id
+POST http://localhost:8080/api/public/marketprices
+Content-Type:  application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "marketprices",
+    "attributes": {
+      "baseKey": "USD-1",
+      "shift": "0.1",
+      "rate": "USD",
+      "quotationType": "PRICE",
+      "active": "true"
+    }
+  }
+}
+###
+
+PUT http://localhost:8080/api/public/marketprices/0PCKBXAAXMSZM
+Content-Type:  application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "marketprices",
+    "id": "0PCKBXAAXMSZM",
+    "attributes": {
+      "baseKey": "USD-1-updated",
+      "shift": "0.1",
+      "rate": "USD",
+      "quotationType": "PRICE",
+      "active": "true"
+    }
+  }
+}
+###

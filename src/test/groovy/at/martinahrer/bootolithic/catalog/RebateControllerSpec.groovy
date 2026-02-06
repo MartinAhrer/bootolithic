@@ -1,0 +1,44 @@
+package at.martinahrer.bootolithic.catalog
+
+import at.martinahrer.bootolithic.service.CrudService
+import at.martinahrer.bootolithic.test.web.AbstractStandaloneControllerSpec
+import at.martinahrer.bootolithic.web.CrudController
+import org.jmolecules.ddd.types.Identifier
+import org.springframework.data.domain.PageImpl
+
+import java.util.function.Function
+import java.util.function.Supplier
+
+class RebateControllerSpec extends AbstractStandaloneControllerSpec implements ConverterSetupTrait {
+
+    RebateFactory objectFactory = new RebateFactory()
+    RebateFactory resourceFactory = objectFactory
+
+    Supplier<Identifier> identifierSupplier = { -> new RebateIdentifier() }
+
+    String requestUriPrefix = "/public/marketprices"
+
+    @Override
+    Function getInjectInvalidResourceProperties() {
+        return {
+            Rebate resource ->
+                resource.rebate = new BigDecimal(-1) // this will force a constraint validation error
+                resource
+        }
+    }
+
+    CrudController buildController() {
+        CrudService service = Mock(RebateService)
+
+        // should be possible to move that to some generic mock support for CRUD service operations
+        def object = objectFactory.newObject(id: identifierValue)
+        service.findAll(_) >> new PageImpl([object])
+        service.findById(identifierValue) >> Optional.of(object)
+        service.findById({ !identifierValue.equals(it) }) >> Optional.empty()
+        service.create(_) >> { Rebate entity -> entity }
+        service.update(_, _) >> { Identifier id, Rebate entity -> entity }
+
+        return new RebateController(service)
+    }
+
+}

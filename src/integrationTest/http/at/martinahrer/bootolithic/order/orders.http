@@ -1,0 +1,90 @@
+# Run catalog.http POSTs before to have valid reference data
+
+< {%
+    request.variables.set("requestedDeliveryDate", new Date().toJSON())
+%}
+
+POST http://localhost:8080/api/public/orders
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "id": "D1B29B29-853E-453E-B5A3-3AA244C161CD",
+  "orderNumber": "4711",
+  "customer": {
+    "name": "John Wick",
+    "email": "baba.yaga@continental.hotel",
+    "iban": "11111"
+  },
+  "address": {
+    "street": "street",
+    "zipCode": "zipCode",
+    "city": "city",
+    "region": "region",
+    "country": "country"
+  },
+  "requestedDeliveryDate": "{{requestedDeliveryDate}}",
+  "positions": [
+    {
+      "id": 807628027892784524,
+      "quantity": 1,
+      "article": "0PCKBXAAXMSZN"
+    }
+  ]
+}
+
+###
+
+GET http://localhost:8080/api/public/orders2/0PCKBXAAXMSZP
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/public/orders
+Accept: application/json
+
+###
+
+< {%
+    request.variables.set("requestedDeliveryDate", new Date().toJSON())
+%}
+
+PUT http://localhost:8080/api/public/orders/0PCKBXAAXMSZP
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZP",
+  "orderNumber": "4711",
+  "customer": {
+    "name": "John Wick",
+    "email": "baba.yaga@continental.hotel",
+    "iban": "11111"
+  },
+  "address": {
+    "street": "street",
+    "zipCode": "zipCode",
+    "city": "city",
+    "region": "region",
+    "country": "country"
+  },
+  "requestedDeliveryDate": "{{requestedDeliveryDate}}",
+  "positions": [
+    {
+      "id": "0PCKBXAAXMSZP",
+      "quantity": 1,
+      "article": "0PCKBXAAXMSZN",
+      "price": {
+        "amount": 1.0,
+        "currency": "EUR"
+      }
+    }
+  ]
+}
+
+###
+
+
+DELETE http://localhost:8080/api/public/orders/0PCKBXAAXMSZP
+
+###

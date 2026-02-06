@@ -1,0 +1,31 @@
+plugins {
+    id 'groovy-gradle-plugin'
+    id 'java-gradle-plugin'
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+Provider<Dependency> alias(Provider<PluginDependency> pluginProvider) {
+    pluginProvider.map { p ->
+        dependencies.create("${p.pluginId}:${p.pluginId}.gradle.plugin:${p.version.requiredVersion}")
+    }
+}
+
+dependencies {
+    implementation(alias(libs.plugins.benmanes.versions))
+    implementation(alias(libs.plugins.build.health))
+    implementation(alias(libs.plugins.gradle.git.properties))
+}
+
+configurations.configureEach {
+    resolutionStrategy.dependencySubstitution {
+        // Override transitive dependency from CycloneDX to fix CVE-2024-26308 and CVE-2024-25710
+        substitute module('org.apache.commons:commons-compress') using module('org.apache.commons:commons-compress:1.28.0')
+        // Override managed dependency in Spring Boot to fix CVE-2025-48924
+        substitute module('org.apache.commons:commons-lang3') using module('org.apache.commons:commons-lang3:3.18.0')
+    }
+}
+

@@ -1,0 +1,53 @@
+POST http://localhost:8080/api/public/articles
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZN",
+  "name": "USD",
+  "factor": 1,
+  "numberOfDecimalDigits": 3,
+  "shiftMiddle": 1,
+  "spread": 2,
+  "surcharge": 1,
+  "currencyCode": "EUR",
+  "rebate": "0PCKBXAAXMSZM"
+}
+###
+
+POST http://localhost:8080/api/public/articles
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "name": "USD",
+  "factor": 1,
+  "numberOfDecimalDigits": 3,
+  "shiftMiddle": 1,
+  "spread": 2,
+  "surcharge": 1,
+  "currencyCode": "EUR",
+  "rebate": "0PCKBXAAXMSZM"
+}
+###
+
+GET http://localhost:8080/api/public/articles
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/public/articles
+Accept: application/vnd.api+json
+
+###
+
+GET http://localhost:8080/api/public/articles/806508545958451639
+Accept: application/json
+
+###
+
+
+GET http://localhost:8080/api/public/articles/bad-id
+Accept: application/json
+
+###

@@ -1,0 +1,4 @@
+moduleName=Test module for specifications
+moduleVersion=1.0
+extensionClasses=at.martinahrer.bootolithic.test.internal.NumberExtension
+staticExtensionClasses=

@@ -1,0 +1,38 @@
+plugins {
+    id 'base'
+    id 'java' // a module that is used as shareable artifact should apply java-library plugin
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(libs.jspecify)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
+
+configurations.configureEach {
+    resolutionStrategy.dependencySubstitution {
+        // Override transitive dependency from Testcontainers to fix CVE-2024-26308 and CVE-2024-25710
+        substitute module('org.apache.commons:commons-compress') using module('org.apache.commons:commons-compress:1.28.0')
+        // Override transitive dependency from Commons Compress to fix CVE-2025-48924
+        substitute module('org.apache.commons:commons-lang3') using module('org.apache.commons:commons-lang3:3.18.0')
+    }
+}

@@ -1,0 +1,4 @@
+[{*.java,*.groovy}]
+indent_style = space
+indent_size = 4
+ij_kotlin_name_count_to_use_star_import = 999 # unclear if this is really effective for java
