@@ -1,0 +1,20 @@
+POST http://localhost:8080/api/public/catalog/sizes
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "id": "XXL",
+  "name": "XXL",
+  "surcharge": 2.5
+}
+###
+
+GET http://localhost:8080/api/public/catalog/sizes
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/public/catalog/sizes/XXL
+Accept: application/json
+
+###

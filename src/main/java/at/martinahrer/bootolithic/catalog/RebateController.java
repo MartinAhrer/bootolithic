@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(RebateController.REQUEST_MAPPING_URI_PREFIX)
 @Validated
 public class RebateController extends AbstractCrudController<Rebate, RebateIdentifier> {
-    public static final String REQUEST_MAPPING_URI_PREFIX = "/public/marketprices";
+    public static final String REQUEST_MAPPING_URI_PREFIX = "/public/catalog/rebates";
 
     public RebateController(RebateService rebateService) {
         super(rebateService);

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(SizeController.REQUEST_MAPPING_URI_PREFIX)
 @Validated
 public class SizeController extends AbstractCrudController<Size, SizeIdentifier> {
-    public static final String REQUEST_MAPPING_URI_PREFIX = "/public/ricrates";
+    public static final String REQUEST_MAPPING_URI_PREFIX = "/public/catalog/sizes";
 
     public SizeController(SizeService sizeService) {
         super(sizeService);

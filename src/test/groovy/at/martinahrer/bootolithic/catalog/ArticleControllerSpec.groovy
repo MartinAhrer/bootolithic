@@ -16,7 +16,7 @@ class ArticleControllerSpec extends AbstractStandaloneControllerSpec implements 
 
     Supplier<Identifier> identifierSupplier = { -> new ArticleIdentifier() }
 
-    String requestUriPrefix = "/public/articles"
+    String requestUriPrefix = "/public/catalog/articles"
 
     @Override
     Function getInjectInvalidResourceProperties() {

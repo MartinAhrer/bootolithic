@@ -16,7 +16,7 @@ class RebateControllerSpec extends AbstractStandaloneControllerSpec implements C
 
     Supplier<Identifier> identifierSupplier = { -> new RebateIdentifier() }
 
-    String requestUriPrefix = "/public/marketprices"
+    String requestUriPrefix = "/public/catalog/rebates"
 
     @Override
     Function getInjectInvalidResourceProperties() {

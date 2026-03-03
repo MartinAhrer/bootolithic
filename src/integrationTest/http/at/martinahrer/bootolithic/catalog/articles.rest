@@ -1,0 +1,86 @@
+POST http://localhost:8080/api/public/catalog/articles
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZN",
+  "name": "Shirt",
+  "numberOfDecimalDigits": 3,
+  "rebate": "0PCKBXAAXMSZM",
+  "size": "XXL"
+}
+###
+
+POST http://localhost:8080/api/public/catalog/articles
+Content-Type:  application/json
+Accept: application/json
+
+{
+  "name": "Shirt",
+  "numberOfDecimalDigits": 3,
+  "rebate": "0PCKBXAAXMSZM",
+  "size": "XXL"
+}
+###
+
+GET http://localhost:8080/api/public/catalog/articles
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/public/catalog/articles/0PCKBXAAXMSZN
+Accept: application/json
+
+###
+
+
+GET http://localhost:8080/api/public/catalog/articles/bad-id
+Accept: application/json
+
+###
+
+### ### json:api
+POST http://localhost:8080/api/public/catalog/articles
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "articles",
+    "id": "0PCKBXAAXMSZN",
+    "attributes": {
+      "name": "Shirt",
+      "numberOfDecimalDigits": 3,
+      "rebate": "0PCKBXAAXMSZM",
+      "size": "XXL"
+    }
+  }
+}
+
+###
+
+POST http://localhost:8080/api/public/catalog/articles
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "articles",
+    "attributes": {
+      "name": "Shirt",
+      "numberOfDecimalDigits": 3,
+      "rebate": "0PCKBXAAXMSZM",
+      "size": "XXL"
+    }
+  }
+}
+
+###
+
+GET http://localhost:8080/api/public/catalog/articles
+Accept: application/vnd.api+json
+
+###
+
+GET http://localhost:8080/api/public/catalog/articles/0PCKBXAAXMSZN
+Accept: application/vnd.api+json

@@ -11,7 +11,9 @@ public class JsonApiJMoleculesJacksonConfiguration {
     public JsonApiConfiguration jsonApiConfiguration() {
         return new JsonApiConfiguration()
             .withMapperCustomizer(builder ->
-                builder.addModule(new JMoleculesModule())
+                builder
+                    .addModule(new JMoleculesModule())
+                    .addModule(new JacksonTsidModule())
             );
     }
 }

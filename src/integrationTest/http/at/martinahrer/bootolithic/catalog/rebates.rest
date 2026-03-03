@@ -1,0 +1,68 @@
+POST http://localhost:8080/api/public/catalog/rebates
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZM",
+  "name": "Super savings",
+  "rebate": "0.1"
+}
+
+###
+
+GET http://localhost:8080/api/public/catalog/rebates
+Accept: application/json
+###
+
+GET http://localhost:8080/api/public/catalog/rebates/0PCKBXAAXMSZM
+Accept: application/json
+
+###
+
+# Not Found 404
+GET http://localhost:8080/api/public/catalog/rebates/0PCKAH07MYFCT
+Accept: application/json
+
+###
+
+# Bad TSID 400
+GET http://localhost:8080/api/public/catalog/rebates/abc
+Accept: application/json
+
+###
+
+# POST without id
+POST http://localhost:8080/api/public/catalog/rebates
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Super savings",
+  "rebate": "0.1"
+}
+
+###
+
+PUT http://localhost:8080/api/public/catalog/rebates/0PCKBXAAXMSZM
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "0PCKBXAAXMSZM",
+  "name": "Super savings updated",
+  "rebate": "0.1"
+}
+###
+
+# Bad request, id must not be updated
+PUT http://localhost:8080/api/public/catalog/rebates/0PCKBXAAXMSZM
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "0PCKAH07MYFCV",
+  "name": "Super savings updated",
+  "rebate": "0.1"
+}
+
+###

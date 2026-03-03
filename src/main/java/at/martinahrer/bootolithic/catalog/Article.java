@@ -31,15 +31,15 @@ public class Article implements AggregateRoot<Article, ArticleIdentifier> {
     @NotNull
     private Integer numberOfDecimalDigits;
 
-    @NotNull
     @AttributeOverrides({
         @AttributeOverride(name = "amount", column = @Column(name = "price_amount")),
         @AttributeOverride(name = "currency", column = @Column(name = "price_currency")),
     })
+    // nullable as the price is calculated from the size and rebate
     private MonetaryAmount price;
 
-    @Association(aggregateType = Rebate.class)
     @AttributeOverride(name = "id", column = @Column(name = "rebate_id"))
+    @Association(aggregateType = Rebate.class)
     @NotNull
     private RebateIdentifier rebate;
 

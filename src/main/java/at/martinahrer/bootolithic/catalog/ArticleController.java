@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(ArticleController.REQUEST_MAPPING_URI_PREFIX)
 @Validated
 public class ArticleController extends AbstractCrudController<Article, ArticleIdentifier> {
-    public static final String REQUEST_MAPPING_URI_PREFIX = "/public/articles";
+    public static final String REQUEST_MAPPING_URI_PREFIX = "/public/catalog/articles";
 
     public ArticleController(ArticleService articleService) {
         super(articleService);

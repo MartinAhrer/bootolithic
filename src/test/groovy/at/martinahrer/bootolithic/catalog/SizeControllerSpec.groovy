@@ -17,7 +17,7 @@ class SizeControllerSpec extends AbstractStandaloneControllerSpec implements Con
 
     Supplier<Identifier> identifierSupplier = { -> new SizeIdentifier(RandomStringUtils.insecure().nextAlphabetic(SizeIdentifierConstraint.MAX_LENGTH)) }
 
-    String requestUriPrefix = "/public/ricrates"
+    String requestUriPrefix = "/public/catalog/sizes"
 
     @Override
     Function getInjectInvalidResourceProperties() {
