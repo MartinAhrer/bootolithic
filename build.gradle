@@ -19,6 +19,7 @@ plugins {
     id 'test-conventions'
     id 'build-conventions'
 
+    alias(libs.plugins.graalvm.buildtools.native)
     alias(libs.plugins.spring.boot)
 
     alias(libs.plugins.cyclonedx.bom)
@@ -29,6 +30,12 @@ plugins {
 group = 'at.martinahrer.bootolithic'
 version = '0.0.1-SNAPSHOT'
 description = 'bootolithic'
+
+repositories {
+    maven {
+        url = 'https://repo.spring.io/snapshot'
+    }
+}
 
 java {
     toolchain {
@@ -117,10 +124,12 @@ dependencies {
     runtimeOnly(platform(libs.jmolecules.bom))
     runtimeOnly(libs.jmolecules.jackson3)
 
-    testImplementation(libs.spring.boot.dependencies)
-    testImplementation(libs.spring.test)
-    testRuntimeOnly(platform(libs.spring.boot.dependencies))
     testImplementation(libs.commons.lang3)
+    testImplementation(libs.spring.boot.dependencies)
+    testImplementation(libs.spring.boot.test)
+    testImplementation(libs.spring.test)
+
+    testRuntimeOnly(platform(libs.spring.boot.dependencies))
 
     testFixturesImplementation(platform(libs.jmolecules.bom))
     testFixturesImplementation(platform(libs.spring.boot.dependencies))
@@ -134,22 +143,17 @@ dependencies {
 
     integrationTestImplementation(libs.hypersistence.tsid)
     integrationTestImplementation(platform(libs.jmolecules.bom))
-    integrationTestImplementation(libs.jmolecules.ddd) // TODO shouldn't this be inherited from production
-    integrationTestImplementation(libs.jmolecules.ddd.integration) //TODO shouldn't this be inherited from production
-    integrationTestImplementation(libs.moneta)
-    integrationTestImplementation(libs.spring.modulith.runtime)
+    //integrationTestImplementation(libs.jmolecules.ddd) // TODO shouldn't this be inherited from production
+    //integrationTestImplementation(libs.jmolecules.ddd.integration) //TODO shouldn't this be inherited from production
+    //integrationTestImplementation(libs.moneta)
+    //integrationTestImplementation(libs.spring.modulith.runtime)
     integrationTestImplementation(libs.spock.spring)
     integrationTestImplementation(libs.spring.boot.jdbc.test)
-    integrationTestImplementation(libs.spring.boot.starter.security.test)
-    integrationTestImplementation(libs.spring.boot.starter.webflux.test)
-    integrationTestImplementation(libs.testcontainers.keycloak)
+    //integrationTestImplementation(libs.spring.boot.starter.flyway)
+    //integrationTestImplementation(libs.spring.boot.starter.security.test)
+    //integrationTestImplementation(libs.spring.boot.starter.webflux.test)
+    //integrationTestImplementation(libs.testcontainers.keycloak)
     integrationTestImplementation(libs.hypersistence.tsid)
-}
-
-sourceSets {
-    integrationTest {
-        resources.srcDir("keycloak/realm")
-    }
 }
 
 // required for jMolecules

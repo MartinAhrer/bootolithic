@@ -9,8 +9,9 @@ byte-buddy = "1.18.4"
 
 cyclonedx-bom = "3.1.0"
 
-gradle-git-properties = "2.5.4"
+buildtools-native = "0.11.5"
 
+gradle-git-properties = "2.5.4"
 groovy = "5.0.4"
 
 hypersistence-utils-hibernate = "3.14.1"
@@ -29,15 +30,16 @@ money-api = "1.1"
 
 spock = "2.4-groovy-5.0"
 
-spring-boot = "4.0.1"
+spring-boot = "4.1.0-M4"
 
 spring-hateoas-jsonapi = "3.1.0"
 
-spring-modulith-bom = "2.0.1"
+spring-modulith-bom = "2.1.0-SNAPSHOT"
 
 testcontainer-keycloak = "3.4.0"
 
 [libraries]
+
 
 commons-lang3 = { module = "org.apache.commons:commons-lang3" }
 
@@ -91,7 +93,12 @@ spock-spring = { module = "org.spockframework:spock-spring" }
 
 spring-beans = { module = "org.springframework:spring-beans" }
 spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
+spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+spring-boot-docker-compose = { module = "org.springframework.boot:spring-boot-docker-compose" }
+spring-boot-hibernate = { module = "org.springframework.boot:spring-boot-hibernate" }
+spring-boot-jdbc-test = { module = "org.springframework.boot:spring-boot-jdbc-test" }
+
 spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 spring-boot-starter-actuator-test = { module = "org.springframework.boot:spring-boot-starter-actuator-test" }
@@ -105,10 +112,6 @@ spring-boot-starter-security-oauth2-resource-server-test = { module = "org.sprin
 spring-boot-starter-security-test = { module = "org.springframework.boot:spring-boot-starter-security-test" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 spring-boot-starter-webflux-test = { module = "org.springframework.boot:spring-boot-starter-webflux-test" }
-spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
-spring-boot-hibernate = { module = "org.springframework.boot:spring-boot-hibernate" }
-spring-boot-jdbc-test = { module = "org.springframework.boot:spring-boot-jdbc-test" }
-spring-boot-docker-compose = { module = "org.springframework.boot:spring-boot-docker-compose" }
 spring-boot-starter-flyway = { module = "org.springframework.boot:spring-boot-starter-flyway" }
 spring-boot-starter-flyway-test = { module = "org.springframework.boot:spring-boot-starter-flyway-test" }
 spring-boot-starter-json = { module = "org.springframework.boot:spring-boot-starter-json" }
@@ -119,6 +122,7 @@ spring-boot-starter-validation = { module = "org.springframework.boot:spring-boo
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 spring-boot-starter-webmvc = { module = "org.springframework.boot:spring-boot-starter-webmvc" }
 spring-boot-starter-webmvc-test = { module = "org.springframework.boot:spring-boot-starter-webmvc-test" }
+spring-boot-test = { module = "org.springframework.boot:spring-boot-test" }
 spring-boot-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers" }
 spring-context = { module = "org.springframework:spring-context" }
 spring-data-commons = { module = "org.springframework.data:spring-data-commons" }
@@ -148,5 +152,7 @@ benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "benma
 build-health = { id = "com.autonomousapps.build-health", version.ref = "build-health" }
 byte-buddy = { id = "net.bytebuddy.byte-buddy-gradle-plugin", version.ref = "byte-buddy" }
 cyclonedx-bom = { id = "org.cyclonedx.bom", version.ref = "cyclonedx-bom" }
+graalvm-buildtools-native = { id = "org.graalvm.buildtools.native", version.ref = "buildtools-native" }
+
 gradle-git-properties = { id = "com.gorylenko.gradle-git-properties", version.ref = "gradle-git-properties" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }

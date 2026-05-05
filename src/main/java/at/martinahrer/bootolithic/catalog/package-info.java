@@ -1,6 +1,6 @@
 @NullMarked
 @BoundedContext(name = "Catalog")
-@ApplicationModule(allowedDependencies = {"web", "service", "persistence"}, displayName = "Catalog bounded context")
+@ApplicationModule(displayName = "Catalog bounded context")
 package at.martinahrer.bootolithic.catalog;
 
 import org.jmolecules.ddd.annotation.BoundedContext;

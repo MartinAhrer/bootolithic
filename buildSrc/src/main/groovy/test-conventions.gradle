@@ -36,6 +36,11 @@ testing {
         }
         if (file('src/integrationTest').exists()) {
             integrationTest(JvmTestSuite) {
+                configurations {
+                    named(sources.implementationConfigurationName) {
+                        extendsFrom(getByName(JavaPlugin.IMPLEMENTATION_CONFIGURATION_NAME))
+                    }
+                }
                 dependencies {
                     implementation (platform(libs.spring.boot.dependencies))
                     implementation (libs.spring.boot.starter.actuator.test)

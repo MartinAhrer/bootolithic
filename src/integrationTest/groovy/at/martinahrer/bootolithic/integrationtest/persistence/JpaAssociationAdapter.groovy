@@ -3,7 +3,9 @@ package at.martinahrer.bootolithic.integrationtest.persistence
 import at.martinahrer.bootolithic.test.AbstractAssociationAdapter
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
+import org.springframework.stereotype.Component
 
+@Component
 class JpaAssociationAdapter<T, R> extends AbstractAssociationAdapter<T, R> {
     JpaAssociationAdapter(EntityManager entityManager) {
         this.entityManager = entityManager
